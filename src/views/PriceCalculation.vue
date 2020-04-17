@@ -12,6 +12,7 @@
         type="range"
         name="items"
         price
+        value="1"
         min="1"
         max="100"
         v-on:change="calculateResult()"
@@ -27,8 +28,10 @@
         id="visitors"
         type="range"
         name="price"
-        min="1"
-        max="20000"
+        step="1000"
+        value="2000"
+        min="2000"
+        max="100000"
         v-on:change="calculateResult(this)"
       />
     </form>
@@ -57,41 +60,56 @@ export default {
       getIpapers.innerHTML = inputIpapers.value;
       getVisitors.innerHTML = inputVisitors.value;
 
-      if (inputIpapers.value <= 5) {
-        let price = 5;
-        inputVisitors.setAttribute("min", "2000");
+      let iPaperPrice = 0;
+      let visitorPrice = 0;
+      let resultPrice = 0;
 
-        getResults.innerHTML = document.costing.items.value * price;
+      // iPaper value
+      if (inputIpapers.value <= 5) {
+        iPaperPrice = 5;
+        inputVisitors.setAttribute("min", "2000");
+        inputVisitors.setAttribute("value", "2000");
+
+        resultPrice = document.costing.items.value * iPaperPrice;
+        getResults.innerHTML = resultPrice;
       }
 
       if (inputIpapers.value > 5 && inputIpapers.value <= 10) {
-        let price = 2;
+        iPaperPrice = 2;
         inputVisitors.setAttribute("min", "1000");
+        inputVisitors.setAttribute("value", "1000");
 
-        getResults.innerHTML = document.costing.items.value * price;
+        resultPrice = document.costing.items.value * iPaperPrice;
+        getResults.innerHTML = resultPrice;
       }
 
-      // If 1-5
-      // iPaper = €5
-      // Visitors = min. 2000
+      if (inputIpapers.value > 10 && inputIpapers.value <= 25) {
+        iPaperPrice = 1;
+        inputVisitors.setAttribute("min", "250");
+        inputVisitors.setAttribute("value", "250");
 
-      // If 6-10
-      // iPaper = €2
-      // Visitors = min. 1000
+        resultPrice = document.costing.items.value * iPaperPrice;
+        getResults.innerHTML = resultPrice;
+      }
 
-      // If 11-25
-      // iPaper = €1
-      // Visitors = min. 250
+      // Visitor value
+      if (inputVisitors.value >= 1000 && inputVisitors.value <= 10000) {
+        visitorPrice = 1.5;
+        getResults.innerHTML =
+          resultPrice + (inputVisitors.value / 1000) * visitorPrice;
+      }
 
-      // If 1-5
-      // iPaper = €5
-      // Visitors = min. 2000
+      if (inputVisitors.value >= 11000 && inputVisitors.value <= 50000) {
+        visitorPrice = 1;
+        getResults.innerHTML =
+          resultPrice + (inputVisitors.value / 1000) * visitorPrice;
+      }
 
-      // If extra visitors
-
-      // 1-10k: €1.5 pr. 1000
-      // 11k-50k: €1 pr. 1000
-      // 51k-100k: €0.75 pr. 1000
+      if (inputVisitors.value >= 51000 && inputVisitors.value <= 100000) {
+        visitorPrice = 0.75;
+        getResults.innerHTML =
+          resultPrice + (inputVisitors.value / 1000) * visitorPrice;
+      }
     }
   },
   mounted() {
