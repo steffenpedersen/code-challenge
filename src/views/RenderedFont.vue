@@ -17,30 +17,45 @@
       <button v-on:click="renderedResultPrototype(this)">Render Text</button>
     </div>
 
-    <div>
-      <span id="result-rendered-font"></span>
+    <div id="result-rendered-font">
+      <span id="result-rendered-text"></span>
     </div>
   </div>
 </template>
 
 <script>
+import flowtype from "flowtype";
+
 export default {
   name: "RenderedFont",
   methods: {
     renderedResultPrototype() {
-      const renderedResult = document.getElementById("result-rendered-font");
+      const renderedFont = document.getElementById("result-rendered-font");
+      const renderedResult = document.getElementById("result-rendered-text");
       const renderedText = document.getElementById("rendered-font-text").value;
-      const renderedWidth = document.getElementById("rendered-font-width")
-        .value;
-      // const renderedHeight = document.getElementById("rendered-font-height").value;
-      // const renderedFonts = document.getElementById("rendered-font-fonts").value;
+      const renderedWidth = document.getElementById("rendered-font-width").value;
+      const renderedHeight = document.getElementById("rendered-font-height").value;
+      const renderedFonts = document.getElementById("rendered-font-fonts").value;
 
+      flowtype(renderedFont, {
+        maxWidth: "800px",
+        minWidth: "50px",
+        lineRatio: 1.45,
+        min: 10,
+        max: 200
+      });
+
+      renderedFont.style.width = renderedWidth + "px";
+      renderedFont.style.height = renderedHeight + "px";
+      renderedFont.style.fontFamily = renderedFonts;
       renderedResult.innerHTML = renderedText;
-      renderedResult.style.width = renderedWidth + "px";
     }
   }
 };
 </script>
 
 <style lang="scss">
+.result-rendered-font {
+  margin: 0 auto;
+}
 </style>
