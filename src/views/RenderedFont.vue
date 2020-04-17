@@ -24,7 +24,10 @@
       </select>
     </div>
 
-    <button class="rendered-font-inputs rendered-font-inputs--center" v-on:click="renderedResult(this)">Render Text</button>
+    <button
+      class="rendered-font-inputs rendered-font-inputs--center"
+      v-on:click="renderedResult(this)"
+    >Render Text</button>
 
     <div id="result-rendered-font">
       <p id="result-rendered-text"></p>
@@ -80,7 +83,6 @@ export default {
   label {
     margin-right: 0.5em;
   }
-  
 }
 
 p {
