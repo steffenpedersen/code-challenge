@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import flowtype from "flowtype";
-
 export default {
   name: "RenderedFont",
   methods: {
@@ -36,14 +34,6 @@ export default {
       const renderedWidth = document.getElementById("rendered-font-width").value;
       const renderedHeight = document.getElementById("rendered-font-height").value;
       const renderedFonts = document.getElementById("rendered-font-fonts").value;
-
-      flowtype(renderedFont, {
-        maxWidth: "800px",
-        minWidth: "50px",
-        lineRatio: 1.45,
-        min: 10,
-        max: 200
-      });
 
       renderedFont.style.width = renderedWidth + "px";
       renderedFont.style.height = renderedHeight + "px";
