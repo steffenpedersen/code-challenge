@@ -18,12 +18,14 @@
     </div>
 
     <div id="result-rendered-font">
-      <span id="result-rendered-text"></span>
+      <p id="result-rendered-text"></p>
     </div>
   </div>
 </template>
 
 <script>
+import fitty from "fitty";
+
 export default {
   name: "RenderedFont",
   methods: {
@@ -40,12 +42,19 @@ export default {
       renderedFont.style.fontFamily = renderedFonts;
       renderedResult.innerHTML = renderedText;
     }
+  },
+  mounted() {
+    fitty('#result-rendered-text');
   }
 };
 </script>
 
 <style lang="scss">
-.result-rendered-font {
+#result-rendered-font {
   margin: 0 auto;
+}
+
+p {
+  margin: 0;
 }
 </style>
