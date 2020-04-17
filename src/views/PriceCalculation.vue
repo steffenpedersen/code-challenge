@@ -1,38 +1,38 @@
 <template>
   <div class="price-calculation">
     <form name="costing">
-      <div class="label">
+      <div class="price-calculation-label">
         <label for="items">iPapers needed:</label>
         <span id="ipapers-needed"></span>
       </div>
 
       <input
-        class="input"
+        class="price-calculation-input"
         id="ipapers"
         type="range"
         name="items"
         price
         min="0"
         max="10"
-        :change="calculateResult()"
+        v-on:change="calculateResult()"
       />
 
-      <div class="label">
+      <div class="price-calculation-label">
         <label for="price">Expected visitors pr. month:</label>
         <span id="expected-visitors"></span>
       </div>
 
       <input
-        class="input"
+        class="price-calculation-input"
         id="visitors"
         type="range"
         name="price"
         min="0"
         max="10"
-        :change="calculateResult(this)"
+        v-on:change="calculateResult(this)"
       />
     </form>
-    <div class="result">
+    <div class="price-calculation-result">
       <span>Your price:</span>
       <strong>
         <span id="result-price"></span>/month
@@ -60,6 +60,9 @@ export default {
       getResults.innerHTML =
         document.costing.items.value * document.costing.price.value;
     }
+  },
+  mounted() {
+    this.calculateResult();
   }
 };
 </script>
@@ -70,17 +73,17 @@ export default {
   margin: 0 auto;
 }
 
-.label {
+.price-calculation-label {
   display: flex;
   justify-content: space-between;
 }
 
-.input {
+.price-calculation-input {
   width: 100%;
   margin-bottom: 1em;
 }
 
-.result {
+.price-calculation-result {
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
