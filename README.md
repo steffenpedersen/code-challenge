@@ -1,8 +1,6 @@
 # Code Challenge
 
-**Disclaimer** ⚠️ This repository shows challenges done in a short amount of time and it should not reflect code done in an actual project.
-
-The project is build with Vue Cli using Babel, Router, Vuex, CSS Pre-processor (SCSS) and Linter.
+The project is built with Vue Cli using Babel, Router, Vuex, CSS Pre-processor (SCSS) and Linter.
 
 I chose to use [fitty](https://github.com/rikschennink/fitty) for text resizing because it’s well-supported, well-used and it doesn’t use any dependencies.
 
