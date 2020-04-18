@@ -1,6 +1,6 @@
 # Code Challenge
 
-**Disclaimer** ⚠️ This repository shows challenges done in a short amount of time and it should not reflect code done in an actual project 😃
+**Disclaimer** ⚠️ This repository shows challenges done in a short amount of time and it should not reflect code done in an actual project.
 
 The project is build with Vue Cli using Babel, Router, Vuex, CSS Pre-processor (SCSS) and Linter.
 
@@ -15,7 +15,7 @@ I chose to use [fitty](https://github.com/rikschennink/fitty) for text resizing 
     - [Consistency](#consistency)
       - [Naming](#naming)
       - [Components](#components)
-      - [document.something](#documentsomething)
+      - [Input bindings](#input-bindings)
     - [Architecture](#architecture)
     - [Tests](#tests)
     - [Docker](#docker)
@@ -86,9 +86,9 @@ Maybe I could also have avoided a `<div>` or two.
 
 Instead of using multiple if statements in `PriceCalculation.vue`, I should use components or some form of helper methods.
 
-#### document.something
+#### Input bindings
 
-The call for the elements should be done outside of the methods. It's not necessary to make the call every single time. It would also be better to search the elements in a more sophisticated way than `document.something`.
+The call for the elements should be done outside of the methods. It's not necessary to make the call every single time. It would also be better to search the elements in a more sophisticated way than `document.something`. We could use [v-model](https://vuejs.org/v2/guide/forms.html) for input bindings or the [ref attribute](https://vuejs.org/v2/guide/components-edge-cases.html#Accessing-Child-Component-Instances-amp-Child-Elements) for edge cases.
 
 ### Architecture
 
